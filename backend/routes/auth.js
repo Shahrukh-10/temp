@@ -97,10 +97,11 @@ router.post(
 );
 
 // Get logged in user detail
-router.get("/getuser", fetchUser, async (req, res) => {
+router.post("/getuser", fetchUser, async (req, res) => {
   try {
-    let userId;
+    let userId = req.user.id;
     const user = await User.findById(userId).select("-password");
+    res.send({user})
   } catch (error) {
     console.log(error.message);
     res.status(500).send("Internal server error.");
