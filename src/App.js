@@ -1,29 +1,19 @@
 import React from "react";
 import Navbar from "./components/Navbar";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
+import { BrowserRouter as Router, Routes, Route,  } from "react-router-dom";
 
 function App() {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        <Route exact path="/about">
-          <About />
-        </Route>
-        {/* <Route exact path="/users">
-          <Users />
-        </Route> */}
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
+      <Routes>
+        <Route exact path="/about" element={<About />} />
+      </Routes>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+      </Routes>
     </Router>
   );
 }
